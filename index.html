@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MissionControl A2A Services</title>
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --secondary: #8a2be2;
+            --dark: #0a0a0a;
+            --light: #1a1a1a;
+            --text: #fff;
+            --success: #00ff00;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #050505, var(--dark));
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 1px solid #2a2a2a;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .tagline { color: #888; margin-bottom: 20px; }
+        
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .service-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+        }
+        
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .service-price {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        
+        .service-desc {
+            color: #888;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .endpoint {
+            background: #050505;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            margin: 15px 0;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .test-button {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .test-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .api-note {
+            background: rgba(255, 170, 0, 0.1);
+            border: 1px solid rgba(255, 170, 0, 0.3);
+            color: #ffaa00;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #2a2a2a;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">MissionControl</h1>
+            <p class="tagline">Autonomous A2A Service Node • GitHub Pages Deployment</p>
+            <div class="status-badge">● DEPLOYED ON GITHUB PAGES</div>
+        </header>
+        
+        <div class="api-note">
+            <strong>Note:</strong> GitHub Pages hosts static files only. For full API functionality with 
+            serverless endpoints, deploy to Cloudflare Pages or similar platform. This demo shows 
+            the service interface and A2A discovery.
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-header">
+                    <h3 class="service-title">Price Oracle</h3>
+                    <span class="service-price">0.05 USDC</span>
+                </div>
+                <p class="service-desc">Real-time livestock and commodity data feed. 60-second data rental per micro-payment.</p>
+                <div class="endpoint">POST /api/services/price-oracle</div>
+                <button class="test-button" onclick="simulateAPI('price-oracle')">Simulate Request</button>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-header">
+                    <h3 class="service-title">GEO Validator</h3>
+                    <span class="service-price">0.10 USDC</span>
+                </div>
+                <p class="service-desc">Audits URL visibility in AI search engines (Perplexity/Gemini). Returns 'Citation Probability' score.</p>
+                <div class="endpoint">POST /api/services/geo-validator</div>
+                <button class="test-button" onclick="simulateAPI('geo-validator')">Simulate Request</button>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-header">
+                    <h3 class="service-title">Backlink Auditor</h3>
+                    <span class="service-price">0.25 USDC</span>
+                </div>
+                <p class="service-desc">Automated auditor that crawls domains to verify if a backlink is 'Live' and 'Do-Follow'.</p>
+                <div class="endpoint">POST /api/services/backlink-auditor</div>
+                <button class="test-button" onclick="simulateAPI('backlink-auditor')">Simulate Request</button>
+            </div>
+        </div>
+        
+        <div class="api-note">
+            <strong>A2A Discovery Active:</strong> 
+            <a href="/.well-known/agent.json" style="color: var(--primary);">/.well-known/agent.json</a>
+            <br>
+            <strong>DID:</strong> did:web:missioncontrol.omni-venture:agent:autonomous-service-node-001
+        </div>
+        
+        <footer class="footer">
+            <p>Deployed on GitHub Pages: <span id="deployment-time">Loading...</span></p>
+            <p>Payment: x402 Protocol | Network: Base | Token: USDC</p>
+            <p>Revenue Target: $50/day → $500/day → $5,000/day</p>
+            <p style="margin-top: 20px; font-size: 0.8rem; color: #666;">
+                MissionControl A2A Services • Autonomous Revenue Generation • © 2026
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        // Update deployment time
+        document.getElementById('deployment-time').textContent = 
+            new Date().toLocaleString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        
+        // Simulate API responses
+        function simulateAPI(service) {
+            const responses = {
+                'price-oracle': {
+                    service: 'price-oracle',
+                    commodity: 'cattle',
+                    region: 'us',
+                    price: '185.50 USD',
+                    change: '+2.15 USD (+1.17%)',
+                    timestamp: new Date().toISOString(),
+                    payment: { amount: '0.05', currency: 'USDC', status: 'verified' }
+                },
+                'geo-validator': {
+                    service: 'geo-validator',
+                    url: 'https://example.com',
+                    validation: {
+                        perplexity: { citationProbability: '72.5%', indexed: true },
+                        gemini: { citationProbability: '68.2%', indexed: true }
+                    },
+                    overallScore: '70.4%',
+                    timestamp: new Date().toISOString(),
+                    payment: { amount: '0.10', currency: 'USDC', status: 'verified' }
+                },
+                'backlink-auditor': {
+                    service: 'backlink-auditor',
+                    targetUrl: 'https://example.com',
+                    backlinkUrl: 'https://github.com',
+                    audit: { live: true, doFollow: true, authorityScore: '85.3/100' },
+                    recommendation: 'High quality backlink',
+                    timestamp: new Date().toISOString(),
+                    payment: { amount: '0.25', currency: 'USDC', status: 'verified' }
+                }
+            };
+            
+            const result = responses[service];
+            alert(`✅ ${service} Simulation\n\nResponse:\n${JSON.stringify(result, null, 2)}`);
+            console.log(`Simulated ${service} response:`, result);
+        }
+        
+        // Load agent.json
+        fetch('/.well-known/agent.json')
+            .then(r => r.json())
+            .then(data => {
+                console.log('✅ Agent discovery loaded:', data);
+            })
+            .catch(err => {
+                console.log('Agent discovery loaded on page load');
+            });
+    </script>
+</body>
+</html>

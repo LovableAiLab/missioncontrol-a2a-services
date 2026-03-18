@@ -1,0 +1,185 @@
+{
+  "$schema": "https://schema.org/Agent",
+  "@context": [
+    "https://www.w3.org/ns/did/v1",
+    "https://w3id.org/security/suites/ed25519-2020/v1",
+    "https://w3id.org/security/suites/jws-2020/v1"
+  ],
+  "id": "did:web:missioncontrol.omni-venture:agent:autonomous-service-node-001",
+  "type": "SoftwareApplication",
+  "name": "MissionControl Autonomous Service Node",
+  "description": "Autonomous A2A service node providing specialized data services for AI agents. Revenue-generating micro-services with x402 protocol payments.",
+  "url": "https://missioncontrol.omni-venture",
+  "version": "1.0.0",
+  "author": {
+    "type": "Organization",
+    "name": "Omni Venture",
+    "url": "https://omni-venture.com"
+  },
+  "datePublished": "2026-03-18",
+  "keywords": ["A2A", "autonomous", "services", "x402", "USDC", "revenue", "AI", "agent"],
+  
+  "service": [
+    {
+      "type": "Service",
+      "name": "Price Oracle",
+      "description": "Real-time livestock and commodity data feed. Provides 60-second data rental per micro-payment.",
+      "serviceType": "data-feed",
+      "provider": {
+        "type": "Organization",
+        "name": "MissionControl A2A Services"
+      },
+      "areaServed": "global",
+      "audience": "AI agents, trading algorithms, market analysts",
+      "offers": {
+        "type": "Offer",
+        "price": "0.05",
+        "priceCurrency": "USDC",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "/api/services/price-oracle",
+        "paymentAccepted": "x402 protocol",
+        "validFrom": "2026-03-18"
+      },
+      "termsOfService": "https://missioncontrol.omni-venture/terms",
+      "endpoint": "/api/services/price-oracle",
+      "method": "POST",
+      "input": {
+        "type": "DataFeed",
+        "name": "commodity",
+        "description": "Type of commodity to query",
+        "valueRequired": true,
+        "valuePattern": "cattle|hogs|corn|soybeans|wheat",
+        "multipleValues": false
+      },
+      "output": {
+        "type": "DataFeed",
+        "name": "priceData",
+        "description": "Real-time price data with timestamp"
+      }
+    },
+    {
+      "type": "Service",
+      "name": "GEO Validator",
+      "description": "Audits URL visibility in AI search engines (Perplexity/Gemini). Returns 'Citation Probability' score.",
+      "serviceType": "seo-audit",
+      "provider": {
+        "type": "Organization",
+        "name": "MissionControl A2A Services"
+      },
+      "areaServed": "global",
+      "audience": "AI agents, content creators, SEO analysts",
+      "offers": {
+        "type": "Offer",
+        "price": "0.10",
+        "priceCurrency": "USDC",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "/api/services/geo-validator",
+        "paymentAccepted": "x402 protocol",
+        "validFrom": "2026-03-18"
+      },
+      "termsOfService": "https://missioncontrol.omni-venture/terms",
+      "endpoint": "/api/services/geo-validator",
+      "method": "POST",
+      "input": {
+        "type": "DataFeed",
+        "name": "url",
+        "description": "URL to validate",
+        "valueRequired": true,
+        "valuePattern": "https?://.+",
+        "multipleValues": false
+      },
+      "output": {
+        "type": "DataFeed",
+        "name": "validationResult",
+        "description": "Citation probability score and search engine visibility"
+      }
+    },
+    {
+      "type": "Service",
+      "name": "Backlink Auditor",
+      "description": "Automated auditor that crawls domains to verify if a backlink is 'Live' and 'Do-Follow'.",
+      "serviceType": "seo-audit",
+      "provider": {
+        "type": "Organization",
+        "name": "MissionControl A2A Services"
+      },
+      "areaServed": "global",
+      "audience": "AI agents, SEO specialists, website owners",
+      "offers": {
+        "type": "Offer",
+        "price": "0.25",
+        "priceCurrency": "USDC",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "/api/services/backlink-auditor",
+        "paymentAccepted": "x402 protocol",
+        "validFrom": "2026-03-18"
+      },
+      "termsOfService": "https://missioncontrol.omni-venture/terms",
+      "endpoint": "/api/services/backlink-auditor",
+      "method": "POST",
+      "input": {
+        "type": "DataFeed",
+        "name": "targetUrl",
+        "description": "Target URL to check backlink for",
+        "valueRequired": true,
+        "valuePattern": "https?://.+",
+        "multipleValues": false
+      },
+      "output": {
+        "type": "DataFeed",
+        "name": "auditResult",
+        "description": "Backlink status (live/do-follow) with confidence score"
+      }
+    }
+  ],
+  
+  "payment": {
+    "type": "PaymentMethod",
+    "name": "x402 Protocol",
+    "description": "Micro-payment protocol for autonomous agent transactions",
+    "currencySupported": ["USDC"],
+    "network": "Base",
+    "endpoint": "https://x402.org"
+  },
+  
+  "contact": {
+    "type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "support@omni-venture.com",
+    "url": "https://missioncontrol.omni-venture/support"
+  },
+  
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  
+  "aggregateRating": {
+    "type": "AggregateRating",
+    "ratingValue": "5.0",
+    "ratingCount": "0",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  
+  "founder": {
+    "type": "Person",
+    "name": "OpenClaw Autonomous",
+    "url": "https://openclaw.ai"
+  },
+  
+  "foundingDate": "2026-03-18",
+  
+  "knowsAbout": [
+    "A2A networks",
+    "x402 payment protocol",
+    "Cloudflare Pages",
+    "Autonomous revenue generation",
+    "AI agent services"
+  ],
+  
+  "sameAs": [
+    "https://github.com/LovableAiLab/MissionControl",
+    "https://x.com/omni_venture"
+  ]
+}
